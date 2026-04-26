@@ -1,0 +1,67 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# infra/azure-container.yml — Configuration Azure Container Apps
+# Utilisé comme référence ou pour déploiement via GitHub Actions
+# ─────────────────────────────────────────────────────────────────────────────
+
+properties:
+  configuration:
+    ingress:
+      external: true
+      targetPort: 8000
+      allowInsecure: false
+    registries:
+      - server: smartyregistry.azurecr.io
+        username: smartyregistry
+    secrets:
+      - name: azure-api-key
+        value: ""  # Remplir via Azure Portal → Secrets
+      - name: database-url
+        value: ""
+      - name: azure-storage-connection-string
+        value: ""
+      - name: secret-key
+        value: ""
+
+  template:
+    containers:
+      - name: smarty-backend
+        image: smartyregistry.azurecr.io/smarty-backend:latest
+        resources:
+          cpu: 0.5
+          memory: 1.0Gi
+        env:
+          - name: AZURE_API_KEY
+            secretRef: azure-api-key
+          - name: AZURE_ENDPOINT
+            value: ""  # Remplir
+          - name: AZURE_MODEL_NAME
+            value: smarty-llama
+          - name: AZURE_API_VERSION
+            value: "2024-05-01-preview"
+          - name: DATABASE_URL
+            secretRef: database-url
+          - name: AZURE_STORAGE_CONNECTION_STRING
+            secretRef: azure-storage-connection-string
+          - name: AZURE_BLOB_CONTAINER
+            value: smarty-knowledge
+          - name: SECRET_KEY
+            secretRef: secret-key
+          - name: ENVIRONMENT
+            value: production
+          - name: LOG_LEVEL
+            value: INFO
+        probes:
+          - type: liveness
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 30
+    scale:
+      minReplicas: 0   # Scale to zero quand inactif = économies
+      maxReplicas: 3
+      rules:
+        - name: http-scaling
+          http:
+            metadata:
+              concurrentRequests: "10"

@@ -1,0 +1,20 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Dépendances Python
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Code du scraper
+COPY scrape.py .
+COPY update_knowledge.py .
+
+# Base de connaissances initiale (sera mise à jour par le scraper)
+COPY knowledge/ ./knowledge/
+
+CMD ["python", "update_knowledge.py"]

@@ -1,0 +1,2038 @@
+{
+    "_meta": {
+        "version": "1.0",
+        "last_updated": "2025-10-30",
+        "source": "Smart Starts — base initiale",
+        "scraper_update": "toutes les nuits via Azure Container Jobs",
+        "global_useful_links": {
+            "france_diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/",
+            "who_travel": "https://www.who.int/travel-advice",
+            "pasteur_vaccins": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+            "smartstarts_assurance": "https://www.smartstarts.com/assurance",
+            "smartstarts_contact": "https://www.smartstarts.com/contact"
+        }
+    },
+    "insurance_products": {
+        "smarty_essentiel": {
+            "name": "Smarty Essentiel",
+            "niveau_risque": "low",
+            "couverture": [
+                "Rapatriement",
+                "Soins de base",
+                "Responsabilité civile"
+            ],
+            "prix_indicatif": "à partir de 2€/jour"
+        },
+        "smarty_confort": {
+            "name": "Smarty Confort",
+            "niveau_risque": "moderate",
+            "couverture": [
+                "Rapatriement",
+                "Soins étendus",
+                "Maladies tropicales",
+                "Assistance 24h",
+                "Annulation"
+            ],
+            "prix_indicatif": "à partir de 4€/jour"
+        },
+        "smarty_premium": {
+            "name": "Smarty Premium",
+            "niveau_risque": "high",
+            "couverture": [
+                "Rapatriement urgent",
+                "Évacuation médicale",
+                "Soins complets",
+                "Zones de conflit",
+                "Annulation toutes causes",
+                "Bagages"
+            ],
+            "prix_indicatif": "à partir de 7€/jour"
+        },
+        "smarty_famille": {
+            "name": "Smarty Famille",
+            "niveau_risque": "all",
+            "couverture": [
+                "Tous niveaux de risque",
+                "Enfants inclus",
+                "Rapatriement famille",
+                "Assistance pédiatrique"
+            ],
+            "prix_indicatif": "à partir de 6€/jour/famille"
+        },
+        "smarty_expat": {
+            "name": "Smarty Expat",
+            "niveau_risque": "all",
+            "couverture": [
+                "Séjour longue durée",
+                "Soins chroniques",
+                "Rapatriement",
+                "Responsabilité civile pro",
+                "Bagages et effets personnels"
+            ],
+            "prix_indicatif": "à partir de 90€/mois"
+        }
+    },
+    "activity_risk_modifier": {
+        "tourisme": "low",
+        "stage": "low",
+        "enseignement": "low",
+        "volontariat": "moderate",
+        "travail_chantier": "high",
+        "recherche_terrain": "moderate",
+        "mission_humanitaire": "high",
+        "sport_extreme": "high",
+        "expat": "moderate",
+        "pelerinage": "moderate"
+    },
+    "countries": {
+        "FR": {
+            "name": "France",
+            "region": "Europe de l'Ouest",
+            "risk_level": "low",
+            "visa": {
+                "espace_schengen": true,
+                "eu_citizens": "libre circulation",
+                "maghreb": "visa Schengen requis",
+                "afrique_subsaharienne": "visa Schengen requis",
+                "usa_canada": "ESTA ou visa selon nationalité",
+                "duree_max_sans_visa_schengen": "90 jours sur 180"
+            },
+            "health": {
+                "vaccines_required": [],
+                "vaccines_recommended": [
+                    "Grippe (hiver)"
+                ],
+                "risks": [],
+                "eau_potable": true,
+                "systeme_sante": "excellent",
+                "urgences": "15 (SAMU), 17 (Police), 18 (Pompiers), 112 (Européen)"
+            },
+            "religion": {
+                "dominant": "Catholicisme (laïcité)",
+                "muslim_friendly": true,
+                "halal_food": "très disponible dans les grandes villes",
+                "mosques": true,
+                "churches": true,
+                "synagogues": true,
+                "temples_bouddhistes": true,
+                "alcohol": "autorisé partout",
+                "ramadan": "aucune restriction",
+                "dress_code_religieux": "aucun (laïcité dans les institutions publiques)",
+                "restrictions_religieuses": [
+                    "Voile interdit dans les écoles publiques et institutions"
+                ]
+            },
+            "security": {
+                "level": "low",
+                "indice_paix": 3.0,
+                "zones_attention": [
+                    "Certaines banlieues des grandes villes"
+                ],
+                "terrorisme": "vigilance attentat (plan Vigipirate)",
+                "criminalite": "faible à modérée selon les zones",
+                "pickpocket": "fréquent dans les zones touristiques Paris"
+            },
+            "culture": {
+                "langue_officielle": "Français",
+                "langues_utiles": [
+                    "Anglais dans les zones touristiques"
+                ],
+                "dress_code": "décontracté, tenue correcte dans les lieux religieux",
+                "coutumes": [
+                    "Bise de bienvenue",
+                    "Repas longs et importants",
+                    "Ponctualité appréciée"
+                ],
+                "lois_importantes": [
+                    "Laïcité stricte dans les espaces publics",
+                    "Alcool interdit aux moins de 18 ans"
+                ],
+                "monnaie": "Euro (EUR)",
+                "pourboire": "non obligatoire (5-10% apprécié)"
+            },
+            "budget": {
+                "low": "50€/jour",
+                "medium": "100€/jour",
+                "high": "250€/jour",
+                "hebergement_low": "Auberge 20-40€/nuit",
+                "hebergement_medium": "Hôtel 80-150€/nuit",
+                "repas_low": "10-15€",
+                "repas_medium": "20-35€"
+            },
+            "activities": {
+                "tourisme": true,
+                "stage": true,
+                "travail": "permis de travail pour non-UE",
+                "etudes": true,
+                "volontariat": true,
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": true,
+                "hopitaux_pediatriques": true
+            },
+            "insurance_recommended": "smarty_essentiel",
+            "useful_links": {
+                "visa": "https://france-visas.gouv.fr",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/france/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_info": "https://www.diplomatie.gouv.fr/fr/le-ministere-et-son-reseau/ambassades-et-consulats/"
+            }
+        },
+        "TH": {
+            "name": "Thaïlande",
+            "region": "Asie du Sud-Est",
+            "risk_level": "moderate",
+            "visa": {
+                "france": "30 jours sans visa (tourisme)",
+                "belgique": "30 jours sans visa",
+                "algerie": "visa obligatoire (e-Visa disponible)",
+                "maroc": "visa obligatoire",
+                "tunisie": "visa obligatoire",
+                "prolongation": "possible sur place (30 jours supplémentaires)",
+                "visa_travail": "permis de travail obligatoire (Work Permit)",
+                "documents_requis": [
+                    "Passeport valide 6 mois",
+                    "Billet retour",
+                    "Justificatif hébergement",
+                    "Fonds suffisants (20 000 THB)"
+                ]
+            },
+            "health": {
+                "vaccines_required": [],
+                "vaccines_recommended": [
+                    "Hépatite A",
+                    "Hépatite B",
+                    "Typhoïde",
+                    "Rage",
+                    "Encéphalite japonaise (zones rurales)"
+                ],
+                "risks": [
+                    "Dengue (toute l'année)",
+                    "Paludisme (zones rurales/frontières)",
+                    "Zika",
+                    "Choléra (rare)"
+                ],
+                "eau_potable": false,
+                "conseil_eau": "eau en bouteille uniquement",
+                "systeme_sante": "bon dans les grandes villes, limité en zones rurales",
+                "urgences": "1669 (SAMU), 191 (Police), 199 (Pompiers)"
+            },
+            "religion": {
+                "dominant": "Bouddhisme Theravada (95%)",
+                "muslim_friendly": true,
+                "halal_food": "disponible dans les villes et zones sud",
+                "mosques": "principalement dans le Sud (Phuket, Krabi, provinces du Sud)",
+                "churches": true,
+                "alcohol": "autorisé (interdit certains jours bouddhistes)",
+                "ramadan": "respecté dans les zones musulmanes du Sud",
+                "dress_code_religieux": "tenue couverte obligatoire dans les temples bouddhistes",
+                "restrictions_religieuses": [
+                    "Respect absolu des images du Bouddha",
+                    "Ne pas pointer les pieds vers un Bouddha",
+                    "Les femmes ne touchent pas les moines"
+                ]
+            },
+            "security": {
+                "level": "moderate",
+                "indice_paix": 6.0,
+                "zones_attention": [
+                    "Provinces du Sud (Pattani, Yala, Narathiwat) — risque terroriste élevé"
+                ],
+                "zones_dangereuses": [
+                    "Frontière Myanmar (nord)",
+                    "Frontière Cambodge (mines)"
+                ],
+                "criminalite": "faible dans les zones touristiques, arnaques fréquentes",
+                "arnaques_communes": [
+                    "Tuk-tuk arnaque",
+                    "Gemstones scam",
+                    "Temple fermé scam"
+                ],
+                "conduite": "conduite à gauche"
+            },
+            "culture": {
+                "langue_officielle": "Thaï",
+                "langues_utiles": [
+                    "Anglais dans les zones touristiques"
+                ],
+                "dress_code": "tenue couverte dans les temples, maillot de bain sur les plages uniquement",
+                "coutumes": [
+                    "Ne jamais toucher la tête de quelqu'un",
+                    "Respecter la famille royale (lèse-majesté pénalement punissable)",
+                    "Salutation Wai (mains jointes)"
+                ],
+                "lois_importantes": [
+                    "Lèse-majesté : prison ferme",
+                    "Drogues : peine de mort possible",
+                    "Alcool interdit certains jours",
+                    "Cigarette interdite sur certaines plages"
+                ],
+                "monnaie": "Baht thaïlandais (THB)",
+                "pourboire": "apprécié (20-50 THB)"
+            },
+            "budget": {
+                "low": "25€/jour",
+                "medium": "55€/jour",
+                "high": "150€/jour",
+                "hebergement_low": "Guesthouse 8-20€/nuit",
+                "hebergement_medium": "Hôtel 40-100€/nuit",
+                "repas_low": "2-5€ (street food)",
+                "repas_medium": "10-25€ (restaurant)"
+            },
+            "activities": {
+                "tourisme": true,
+                "stage": true,
+                "travail": "permis de travail obligatoire",
+                "volontariat": true,
+                "enseignement": true,
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": true,
+                "hopitaux_pediatriques": true,
+                "attention_enfants": [
+                    "Vaccins à jour obligatoires",
+                    "Vigilance dengue",
+                    "Eau en bouteille uniquement"
+                ]
+            },
+            "insurance_recommended": "smarty_confort",
+            "useful_links": {
+                "visa": "https://www.thaievisa.go.th",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/thailande/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://th.ambafrance.org",
+                "permis_travail": "https://www.mol.go.th/en"
+            }
+        },
+        "JP": {
+            "name": "Japon",
+            "region": "Asie de l'Est",
+            "risk_level": "low",
+            "visa": {
+                "france": "90 jours sans visa",
+                "belgique": "90 jours sans visa",
+                "algerie": "visa obligatoire",
+                "maroc": "visa obligatoire",
+                "visa_travail": "visa spécifique selon activité (stage, travail, enseignement)",
+                "documents_requis": [
+                    "Passeport valide",
+                    "Preuve de fonds suffisants",
+                    "Itinéraire de voyage"
+                ]
+            },
+            "health": {
+                "vaccines_required": [],
+                "vaccines_recommended": [
+                    "Encéphalite japonaise (séjour long/rural)",
+                    "Grippe"
+                ],
+                "risks": [
+                    "Tremblements de terre",
+                    "Typhons (juin-octobre)",
+                    "Canicule (été)"
+                ],
+                "eau_potable": true,
+                "systeme_sante": "excellent",
+                "urgences": "110 (Police), 119 (Ambulance/Pompiers)"
+            },
+            "religion": {
+                "dominant": "Shinto et Bouddhisme",
+                "muslim_friendly": true,
+                "halal_food": "disponible dans les grandes villes (Tokyo, Osaka, Kyoto)",
+                "mosques": "disponibles dans les grandes villes",
+                "churches": true,
+                "alcohol": "autorisé (distributeurs automatiques d'alcool)",
+                "ramadan": "aucune restriction",
+                "dress_code_religieux": "tenue correcte dans les temples et sanctuaires",
+                "restrictions_religieuses": [
+                    "Se purifier les mains avant d'entrer dans un sanctuaire Shinto",
+                    "Silence dans les temples"
+                ]
+            },
+            "security": {
+                "level": "low",
+                "indice_paix": 1.3,
+                "zones_attention": [
+                    "Zones côtières (tsunamis)",
+                    "Zones volcaniques actives"
+                ],
+                "criminalite": "très faible",
+                "risques_naturels": [
+                    "Tremblements de terre fréquents",
+                    "Tsunamis côtiers",
+                    "Typhons",
+                    "Éruptions volcaniques"
+                ]
+            },
+            "culture": {
+                "langue_officielle": "Japonais",
+                "langues_utiles": [
+                    "Anglais limité hors zones touristiques"
+                ],
+                "dress_code": "tenue correcte, pas de tatouages visibles (onsen/bains)",
+                "coutumes": [
+                    "Révérence en guise de salutation",
+                    "Chaussures enlevées à l'entrée des maisons",
+                    "Parler doucement dans les transports",
+                    "Files d'attente strictement respectées",
+                    "Pas de pourboire (insulte)"
+                ],
+                "lois_importantes": [
+                    "Drogues : tolérance zéro (prison ferme)",
+                    "Tatouages interdits dans les onsen",
+                    "Alcool interdit dans certains espaces publics"
+                ],
+                "monnaie": "Yen japonais (JPY)",
+                "pourboire": "JAMAIS (considéré comme insultant)"
+            },
+            "budget": {
+                "low": "50€/jour",
+                "medium": "100€/jour",
+                "high": "250€/jour",
+                "hebergement_low": "Capsule hotel/Auberge 20-40€/nuit",
+                "hebergement_medium": "Hôtel 80-150€/nuit",
+                "repas_low": "5-10€ (ramen, onigiri)",
+                "repas_medium": "15-40€ (restaurant)"
+            },
+            "activities": {
+                "tourisme": true,
+                "stage": true,
+                "travail": "visa spécifique requis",
+                "enseignement": true,
+                "expat": true,
+                "volontariat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": true,
+                "hopitaux_pediatriques": true,
+                "attention_enfants": [
+                    "Préparer un plan en cas de tremblement de terre",
+                    "Apprendre les gestes de sécurité sismique"
+                ]
+            },
+            "insurance_recommended": "smarty_essentiel",
+            "useful_links": {
+                "visa": "https://www.vfsglobal.com/japan/france",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/japon/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://jp.ambafrance.org",
+                "permis_travail": "https://www.mhlw.go.jp/english"
+            }
+        },
+        "MA": {
+            "name": "Maroc",
+            "region": "Afrique du Nord",
+            "risk_level": "low",
+            "visa": {
+                "france": "90 jours sans visa",
+                "belgique": "90 jours sans visa",
+                "algerie": "frontière terrestre fermée (voie aérienne uniquement)",
+                "tunisie": "30 jours sans visa",
+                "documents_requis": [
+                    "Passeport valide 6 mois"
+                ]
+            },
+            "health": {
+                "vaccines_required": [],
+                "vaccines_recommended": [
+                    "Hépatite A",
+                    "Typhoïde",
+                    "Rage (zones rurales)"
+                ],
+                "risks": [
+                    "Gastro-entérite (eau)",
+                    "Chaleur extrême (été)",
+                    "Scorpions (zones rurales)"
+                ],
+                "eau_potable": false,
+                "conseil_eau": "eau en bouteille recommandée",
+                "systeme_sante": "bon dans les grandes villes, limité en zones rurales",
+                "urgences": "15 (SAMU), 19 (Police), 15 (Pompiers)"
+            },
+            "religion": {
+                "dominant": "Islam (99%)",
+                "muslim_friendly": true,
+                "halal_food": "tout est halal par défaut",
+                "mosques": "partout",
+                "churches": "disponibles dans les grandes villes",
+                "alcohol": "autorisé dans les établissements licenciés (hôtels, bars touristiques)",
+                "ramadan": "restaurants fermés la journée pendant le Ramadan, ambiance très particulière la nuit",
+                "dress_code_religieux": "tenue couverte conseillée pour les femmes (surtout hors villes)",
+                "restrictions_religieuses": [
+                    "Prosélytisme interdit",
+                    "Relations homosexuelles illégales",
+                    "Respect du Ramadan dans les lieux publics"
+                ]
+            },
+            "security": {
+                "level": "low",
+                "indice_paix": 4.0,
+                "zones_attention": [
+                    "Zones frontalières avec l'Algérie",
+                    "Zones désertiques isolées"
+                ],
+                "criminalite": "faible, arnaques touristiques fréquentes",
+                "arnaques_communes": [
+                    "Faux guides",
+                    "Arnaques dans les souks",
+                    "Taxi sans compteur"
+                ]
+            },
+            "culture": {
+                "langue_officielle": "Arabe, Amazigh (Tamazight)",
+                "langues_utiles": [
+                    "Français très répandu",
+                    "Darija (arabe marocain)"
+                ],
+                "dress_code": "tenue couverte recommandée pour les femmes, surtout dans les zones rurales et médinas",
+                "coutumes": [
+                    "Hospitalité très importante",
+                    "Négociation dans les souks normale",
+                    "Salutation en arabe appréciée",
+                    "Ne pas refuser un thé offert"
+                ],
+                "lois_importantes": [
+                    "Homosexualité illégale (prison)",
+                    "Drogues : prison ferme",
+                    "Respect des lieux saints",
+                    "Photos de personnes sans autorisation déconseillée"
+                ],
+                "monnaie": "Dirham marocain (MAD)",
+                "pourboire": "courant (5-10%)"
+            },
+            "budget": {
+                "low": "20€/jour",
+                "medium": "50€/jour",
+                "high": "120€/jour",
+                "hebergement_low": "Riad/Auberge 10-25€/nuit",
+                "hebergement_medium": "Hôtel 40-90€/nuit",
+                "repas_low": "3-7€ (tajine local)",
+                "repas_medium": "10-25€ (restaurant)"
+            },
+            "activities": {
+                "tourisme": true,
+                "stage": true,
+                "travail": "permis de travail requis pour non-ressortissants",
+                "volontariat": true,
+                "enseignement": true,
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": true,
+                "hopitaux_pediatriques": true,
+                "attention_enfants": [
+                    "Eau en bouteille uniquement",
+                    "Protection solaire renforcée"
+                ]
+            },
+            "insurance_recommended": "smarty_essentiel",
+            "useful_links": {
+                "visa": "https://www.consulat.ma",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/maroc/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://ma.ambafrance.org",
+                "permis_travail": "https://www.emploi.gov.ma"
+            }
+        },
+        "US": {
+            "name": "États-Unis",
+            "region": "Amérique du Nord",
+            "risk_level": "low",
+            "visa": {
+                "france": "ESTA obligatoire (72h avant départ, 21$)",
+                "belgique": "ESTA obligatoire",
+                "algerie": "visa B1/B2 obligatoire (entretien consulaire)",
+                "maroc": "visa B1/B2 obligatoire",
+                "tunisie": "visa B1/B2 obligatoire",
+                "visa_travail": "visa H1B (travail), J1 (stage/échange), O1 (talent exceptionnel)",
+                "documents_requis": [
+                    "Passeport biométrique valide",
+                    "ESTA ou visa selon nationalité",
+                    "Preuve de fonds",
+                    "Billet retour"
+                ]
+            },
+            "health": {
+                "vaccines_required": [],
+                "vaccines_recommended": [
+                    "Grippe",
+                    "Méningite (campus universitaires)"
+                ],
+                "risks": [
+                    "Coût médical EXTRÊMEMENT élevé (urgence = 3000-10000$)"
+                ],
+                "eau_potable": true,
+                "systeme_sante": "excellent mais très coûteux sans assurance",
+                "urgences": "911"
+            },
+            "religion": {
+                "dominant": "Christianisme (pluralisme religieux)",
+                "muslim_friendly": true,
+                "halal_food": "disponible dans les grandes villes (New York, Chicago, Los Angeles, Detroit)",
+                "mosques": "disponibles dans les grandes villes",
+                "churches": true,
+                "synagogues": true,
+                "temples": true,
+                "alcohol": "autorisé (21 ans minimum)",
+                "ramadan": "aucune restriction",
+                "dress_code_religieux": "aucun",
+                "restrictions_religieuses": []
+            },
+            "security": {
+                "level": "low",
+                "indice_paix": 5.8,
+                "zones_attention": [
+                    "Certains quartiers des grandes villes (Chicago South Side, Baltimore, Detroit)"
+                ],
+                "criminalite": "variable selon les États et quartiers",
+                "armes": "port d'armes légal dans de nombreux États",
+                "risques_naturels": [
+                    "Ouragans (côte Est/Golf)",
+                    "Tornades (Midwest)",
+                    "Tremblements de terre (Californie)",
+                    "Blizzards (Nord)"
+                ]
+            },
+            "culture": {
+                "langue_officielle": "Anglais",
+                "langues_utiles": [
+                    "Espagnol très répandu"
+                ],
+                "dress_code": "très décontracté",
+                "coutumes": [
+                    "Pourboire OBLIGATOIRE (15-20%)",
+                    "Sourire et politesse en public",
+                    "Respect de la file d'attente",
+                    "Interactions très directes"
+                ],
+                "lois_importantes": [
+                    "Alcool interdit moins de 21 ans (contrôles stricts)",
+                    "Drogues variable selon États (cannabis légal dans certains)",
+                    "Armes à feu légales dans la plupart des États"
+                ],
+                "monnaie": "Dollar américain (USD)",
+                "pourboire": "OBLIGATOIRE 15-20% au restaurant"
+            },
+            "budget": {
+                "low": "80€/jour",
+                "medium": "150€/jour",
+                "high": "350€/jour",
+                "hebergement_low": "Auberge/Motel 40-80€/nuit",
+                "hebergement_medium": "Hôtel 100-200€/nuit",
+                "repas_low": "10-15€",
+                "repas_medium": "25-50€"
+            },
+            "activities": {
+                "tourisme": true,
+                "stage": "visa J1 requis",
+                "travail": "visa H1B requis",
+                "etudes": "visa F1 requis",
+                "volontariat": true,
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": true,
+                "hopitaux_pediatriques": true,
+                "attention_enfants": [
+                    "Assurance médicale INDISPENSABLE (coûts catastrophiques sans)",
+                    "Discours sur la sécurité des armes"
+                ]
+            },
+            "insurance_recommended": "smarty_premium",
+            "useful_links": {
+                "esta": "https://esta.cbp.dhs.gov",
+                "visa": "https://fr.usembassy.gov/fr/visas-fr",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/etats-unis/",
+                "sante": "https://wwwnc.cdc.gov/travel/destinations/traveler/none/united-states",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://fr.usembassy.gov/fr"
+            }
+        },
+        "AU": {
+            "name": "Australie",
+            "region": "Océanie",
+            "risk_level": "low",
+            "visa": {
+                "france": "eVisitor (sous-classe 651) gratuit en ligne",
+                "belgique": "eVisitor gratuit",
+                "algerie": "visa ETA obligatoire (payant)",
+                "maroc": "visa touristique obligatoire",
+                "visa_travail": "Working Holiday Visa (18-30 ans, sous-classe 417)",
+                "documents_requis": [
+                    "Passeport valide 6 mois",
+                    "Preuve de fonds (5000 AUD minimum)",
+                    "Billet retour"
+                ]
+            },
+            "health": {
+                "vaccines_required": [
+                    "Fièvre jaune si arrivée depuis pays endémique"
+                ],
+                "vaccines_recommended": [
+                    "Hépatite A",
+                    "Hépatite B"
+                ],
+                "risks": [
+                    "Soleil extrêmement intense (UV très élevés)",
+                    "Animaux venimeux (serpents, araignées, méduses)"
+                ],
+                "eau_potable": true,
+                "systeme_sante": "excellent",
+                "urgences": "000"
+            },
+            "religion": {
+                "dominant": "Christianisme (pluralisme)",
+                "muslim_friendly": true,
+                "halal_food": "disponible dans les grandes villes",
+                "mosques": true,
+                "alcohol": "autorisé (18 ans minimum)",
+                "ramadan": "aucune restriction",
+                "dress_code_religieux": "aucun",
+                "restrictions_religieuses": []
+            },
+            "security": {
+                "level": "low",
+                "indice_paix": 1.5,
+                "zones_attention": [
+                    "Zones désertiques isolées (Outback)"
+                ],
+                "criminalite": "très faible",
+                "risques_naturels": [
+                    "Incendies de forêt (été austral)",
+                    "Cyclones (nord)",
+                    "Requins (côtes)",
+                    "Animaux venimeux"
+                ]
+            },
+            "culture": {
+                "langue_officielle": "Anglais",
+                "dress_code": "très décontracté",
+                "coutumes": [
+                    "Très informel",
+                    "BBQ culture",
+                    "Sport très important",
+                    "Respect des peuples autochtones Aborigènes"
+                ],
+                "lois_importantes": [
+                    "Ceinture obligatoire",
+                    "Alcool 18 ans minimum",
+                    "Cannabis illégal (sauf ACT)"
+                ],
+                "monnaie": "Dollar australien (AUD)",
+                "pourboire": "non obligatoire mais apprécié"
+            },
+            "budget": {
+                "low": "70€/jour",
+                "medium": "130€/jour",
+                "high": "300€/jour",
+                "hebergement_low": "Auberge 25-45€/nuit",
+                "hebergement_medium": "Hôtel 90-160€/nuit",
+                "repas_low": "10-18€",
+                "repas_medium": "25-50€"
+            },
+            "activities": {
+                "tourisme": true,
+                "stage": true,
+                "travail": "Working Holiday Visa pour 18-30 ans",
+                "volontariat": true,
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": true,
+                "hopitaux_pediatriques": true,
+                "attention_enfants": [
+                    "Crème solaire indice 50+ obligatoire",
+                    "Vigilance animaux venimeux",
+                    "Apprentissage natation recommandé"
+                ]
+            },
+            "insurance_recommended": "smarty_confort",
+            "useful_links": {
+                "visa": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601",
+                "pvt": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/australie/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://au.ambafrance.org"
+            }
+        },
+        "CA": {
+            "name": "Canada",
+            "region": "Amérique du Nord",
+            "risk_level": "low",
+            "visa": {
+                "france": "AVE (Autorisation de Voyage Électronique) obligatoire (7 CAD)",
+                "belgique": "AVE obligatoire",
+                "algerie": "visa obligatoire",
+                "maroc": "visa obligatoire",
+                "visa_travail": "Permis de travail ouvert (PVT pour 18-35 ans)",
+                "pvt": "Programme Vacances-Travail disponible pour Français, Belges",
+                "documents_requis": [
+                    "Passeport valide",
+                    "AVE ou visa",
+                    "Preuve de fonds"
+                ]
+            },
+            "health": {
+                "vaccines_required": [],
+                "vaccines_recommended": [
+                    "Grippe",
+                    "Rage (zones rurales)"
+                ],
+                "risks": [
+                    "Grand froid (hypothermie)",
+                    "Feux de forêt (été)"
+                ],
+                "eau_potable": true,
+                "systeme_sante": "excellent (gratuit pour résidents, coûteux pour touristes)",
+                "urgences": "911"
+            },
+            "religion": {
+                "dominant": "Christianisme (multiculturalisme officiel)",
+                "muslim_friendly": true,
+                "halal_food": "très disponible (Toronto, Montreal, Vancouver)",
+                "mosques": true,
+                "churches": true,
+                "synagogues": true,
+                "temples": true,
+                "alcohol": "autorisé (18-19 ans selon province)",
+                "ramadan": "aucune restriction",
+                "dress_code_religieux": "aucun",
+                "restrictions_religieuses": []
+            },
+            "security": {
+                "level": "low",
+                "indice_paix": 1.4,
+                "zones_attention": [
+                    "Certains quartiers de Toronto, Vancouver (Downtown Eastside)"
+                ],
+                "criminalite": "faible",
+                "risques_naturels": [
+                    "Blizzards",
+                    "Feux de forêt",
+                    "Ours (zones sauvages)"
+                ]
+            },
+            "culture": {
+                "langue_officielle": "Anglais et Français",
+                "langues_utiles": [
+                    "Français (Québec)",
+                    "Anglais (reste du Canada)"
+                ],
+                "dress_code": "décontracté",
+                "coutumes": [
+                    "Très accueillant",
+                    "Multiculturalisme",
+                    "Respect de l'environnement",
+                    "Pourboire important"
+                ],
+                "lois_importantes": [
+                    "Cannabis légal (usage récréatif)",
+                    "Alcool selon province",
+                    "Ceinture obligatoire"
+                ],
+                "monnaie": "Dollar canadien (CAD)",
+                "pourboire": "15-20% obligatoire au restaurant"
+            },
+            "budget": {
+                "low": "60€/jour",
+                "medium": "120€/jour",
+                "high": "280€/jour",
+                "hebergement_low": "Auberge 25-45€/nuit",
+                "hebergement_medium": "Hôtel 80-160€/nuit",
+                "repas_low": "10-18€",
+                "repas_medium": "25-45€"
+            },
+            "activities": {
+                "tourisme": true,
+                "stage": true,
+                "travail": "PVT ou permis de travail",
+                "etudes": "permis d'études",
+                "volontariat": true,
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": true,
+                "hopitaux_pediatriques": true,
+                "attention_enfants": [
+                    "Vêtements chauds en hiver",
+                    "Assurance médicale indispensable"
+                ]
+            },
+            "insurance_recommended": "smarty_confort",
+            "useful_links": {
+                "ave": "https://www.canada.ca/fr/immigration-refugies-citoyennete/services/visiter-canada/ave.html",
+                "pvt": "https://www.canada.ca/fr/immigration-refugies-citoyennete/services/travailler-canada/vacances-travail.html",
+                "visa": "https://www.canada.ca/fr/immigration-refugies-citoyennete/services/visiter-canada.html",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/canada/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://ca.ambafrance.org"
+            }
+        },
+        "SN": {
+            "name": "Sénégal",
+            "region": "Afrique de l'Ouest",
+            "risk_level": "moderate",
+            "visa": {
+                "france": "90 jours sans visa",
+                "belgique": "90 jours sans visa",
+                "algerie": "90 jours sans visa (CEDEAO)",
+                "maroc": "90 jours sans visa",
+                "documents_requis": [
+                    "Passeport valide 6 mois",
+                    "Preuve de fonds",
+                    "Billet retour"
+                ]
+            },
+            "health": {
+                "vaccines_required": [
+                    "Fièvre jaune OBLIGATOIRE"
+                ],
+                "vaccines_recommended": [
+                    "Hépatite A",
+                    "Hépatite B",
+                    "Typhoïde",
+                    "Méningite",
+                    "Rage",
+                    "Polio"
+                ],
+                "risks": [
+                    "Paludisme (toute l'année, prophylaxie obligatoire)",
+                    "Dengue",
+                    "Choléra (zones rurales)",
+                    "Bilharziose (eaux douces)"
+                ],
+                "eau_potable": false,
+                "conseil_eau": "eau en bouteille uniquement",
+                "systeme_sante": "limité hors Dakar",
+                "urgences": "15 (SAMU), 17 (Police), 18 (Pompiers)"
+            },
+            "religion": {
+                "dominant": "Islam (95%)",
+                "muslim_friendly": true,
+                "halal_food": "tout est halal par défaut",
+                "mosques": "partout",
+                "churches": "disponibles (minorité chrétienne)",
+                "alcohol": "disponible dans les hôtels et restaurants touristiques",
+                "ramadan": "très important, rythme de vie change complètement",
+                "dress_code_religieux": "tenue couverte recommandée (épaules et genoux couverts)",
+                "restrictions_religieuses": [
+                    "Respect du Ramadan en public",
+                    "Tenue modeste conseillée"
+                ]
+            },
+            "security": {
+                "level": "moderate",
+                "indice_paix": 5.5,
+                "zones_attention": [
+                    "Casamance (risque mines)",
+                    "Frontière avec la Gambie"
+                ],
+                "criminalite": "pickpocket dans les marchés, arnaques touristiques",
+                "conduite": "prudence la nuit"
+            },
+            "culture": {
+                "langue_officielle": "Français",
+                "langues_utiles": [
+                    "Wolof (langue nationale)",
+                    "Pulaar",
+                    "Sérère"
+                ],
+                "dress_code": "tenue couverte respectueuse (épaules, genoux)",
+                "coutumes": [
+                    "Teranga (hospitalité sénégalaise) très importante",
+                    "Repas partagé (thiéboudienne)",
+                    "Respect des anciens",
+                    "Ne pas refuser une invitation"
+                ],
+                "lois_importantes": [
+                    "Homosexualité illégale",
+                    "Drogues : prison ferme",
+                    "Respect des lieux religieux"
+                ],
+                "monnaie": "Franc CFA (XOF)",
+                "pourboire": "apprécié (500-1000 FCFA)"
+            },
+            "budget": {
+                "low": "20€/jour",
+                "medium": "50€/jour",
+                "high": "120€/jour",
+                "hebergement_low": "Auberge 10-25€/nuit",
+                "hebergement_medium": "Hôtel 40-90€/nuit",
+                "repas_low": "2-5€ (thiéboudienne local)",
+                "repas_medium": "10-25€ (restaurant)"
+            },
+            "activities": {
+                "tourisme": true,
+                "volontariat": true,
+                "mission_humanitaire": true,
+                "stage": true,
+                "travail": "permis de travail requis",
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": true,
+                "hopitaux_pediatriques": "Dakar uniquement",
+                "attention_enfants": [
+                    "Fièvre jaune OBLIGATOIRE",
+                    "Prophylaxie paludisme OBLIGATOIRE",
+                    "Eau en bouteille uniquement",
+                    "Protections anti-moustiques"
+                ]
+            },
+            "insurance_recommended": "smarty_premium",
+            "useful_links": {
+                "visa": "https://www.visasenegal.sn",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/senegal/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "vaccins": "https://www.who.int/travel-advice",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://sn.ambafrance.org"
+            }
+        },
+        "TR": {
+            "name": "Türkiye (Turquie)",
+            "region": "Europe de l'Est / Asie Mineure",
+            "risk_level": "moderate",
+            "visa": {
+                "france": "e-Visa obligatoire (51$, en ligne)",
+                "belgique": "e-Visa obligatoire",
+                "algerie": "visa à l'arrivée ou e-Visa",
+                "maroc": "visa à l'arrivée (gratuit)",
+                "tunisie": "sans visa 90 jours",
+                "documents_requis": [
+                    "Passeport valide 6 mois",
+                    "e-Visa imprimé",
+                    "Preuve d'hébergement"
+                ]
+            },
+            "health": {
+                "vaccines_required": [],
+                "vaccines_recommended": [
+                    "Hépatite A",
+                    "Typhoïde",
+                    "Rage (zones rurales)"
+                ],
+                "risks": [
+                    "Tremblements de terre (fréquents)",
+                    "Chaleur extrême (été)"
+                ],
+                "eau_potable": false,
+                "conseil_eau": "eau en bouteille recommandée",
+                "systeme_sante": "bon dans les grandes villes",
+                "urgences": "112 (Urgences), 155 (Police), 110 (Pompiers)"
+            },
+            "religion": {
+                "dominant": "Islam (99%, État laïc)",
+                "muslim_friendly": true,
+                "halal_food": "partout par défaut",
+                "mosques": "partout",
+                "churches": "disponibles (minorités chrétiennes)",
+                "synagogues": "disponibles (Istanbul)",
+                "alcohol": "autorisé (restreint dans certaines zones)",
+                "ramadan": "respecté (certains restaurants ferment le jour)",
+                "dress_code_religieux": "tenue couverte dans les mosquées (foulard pour femmes)",
+                "restrictions_religieuses": [
+                    "Tenue couverte dans les mosquées",
+                    "Chaussures enlevées dans les mosquées"
+                ]
+            },
+            "security": {
+                "level": "moderate",
+                "indice_paix": 6.5,
+                "zones_attention": [
+                    "Frontière syrienne (sud-est)",
+                    "Frontière irakienne",
+                    "Zones kurdes (PKK)"
+                ],
+                "zones_dangereuses": [
+                    "Provinces de Sirnak, Hakkari, Şırnak"
+                ],
+                "criminalite": "faible dans les zones touristiques, pickpocket fréquent",
+                "risques_naturels": [
+                    "Tremblements de terre majeurs possibles"
+                ]
+            },
+            "culture": {
+                "langue_officielle": "Turc",
+                "langues_utiles": [
+                    "Anglais dans les zones touristiques",
+                    "Allemand (diaspora)"
+                ],
+                "dress_code": "tenue couverte dans les mosquées, décontracté en ville",
+                "coutumes": [
+                    "Hospitalité très importante",
+                    "Thé systématiquement offert",
+                    "Marchandage dans les bazars",
+                    "Respect des anciens"
+                ],
+                "lois_importantes": [
+                    "Insulte au président : prison",
+                    "Drogues : prison ferme",
+                    "Photos de zones militaires interdites"
+                ],
+                "monnaie": "Lire turque (TRY)",
+                "pourboire": "10-15% apprécié"
+            },
+            "budget": {
+                "low": "25€/jour",
+                "medium": "55€/jour",
+                "high": "130€/jour",
+                "hebergement_low": "Auberge 10-25€/nuit",
+                "hebergement_medium": "Hôtel 45-100€/nuit",
+                "repas_low": "3-7€ (kebab, gözleme)",
+                "repas_medium": "12-30€ (restaurant)"
+            },
+            "activities": {
+                "tourisme": true,
+                "stage": true,
+                "travail": "permis de travail requis",
+                "volontariat": true,
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": true,
+                "hopitaux_pediatriques": true,
+                "attention_enfants": [
+                    "Plan en cas de tremblement de terre",
+                    "Eau en bouteille"
+                ]
+            },
+            "insurance_recommended": "smarty_confort",
+            "useful_links": {
+                "visa": "https://www.evisa.gov.tr",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/turquie/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://tr.ambafrance.org"
+            }
+        },
+        "DE": {
+            "name": "Allemagne",
+            "region": "Europe de l'Ouest",
+            "risk_level": "low",
+            "visa": {
+                "france": "libre circulation (UE)",
+                "belgique": "libre circulation (UE)",
+                "algerie": "visa Schengen requis",
+                "maroc": "visa Schengen requis",
+                "documents_requis": [
+                    "Passeport ou carte d'identité (UE)",
+                    "Visa Schengen (non-UE)"
+                ]
+            },
+            "health": {
+                "vaccines_required": [],
+                "vaccines_recommended": [
+                    "Grippe",
+                    "FSME (encéphalite à tiques, zones rurales)"
+                ],
+                "risks": [
+                    "Tiques (forêts, printemps/été)"
+                ],
+                "eau_potable": true,
+                "systeme_sante": "excellent",
+                "urgences": "110 (Police), 112 (Pompiers/SAMU)"
+            },
+            "religion": {
+                "dominant": "Christianisme (pluralisme)",
+                "muslim_friendly": true,
+                "halal_food": "très disponible (grande communauté turque)",
+                "mosques": true,
+                "churches": true,
+                "synagogues": true,
+                "alcohol": "autorisé (16 ans bière/vin, 18 ans spiritueux)",
+                "ramadan": "aucune restriction",
+                "dress_code_religieux": "aucun",
+                "restrictions_religieuses": []
+            },
+            "security": {
+                "level": "low",
+                "indice_paix": 1.6,
+                "zones_attention": [],
+                "criminalite": "très faible"
+            },
+            "culture": {
+                "langue_officielle": "Allemand",
+                "langues_utiles": [
+                    "Anglais très répandu"
+                ],
+                "dress_code": "décontracté",
+                "coutumes": [
+                    "Ponctualité TRÈS importante",
+                    "Direct et honnête",
+                    "Respect des règles strict",
+                    "Séparation stricte vie pro/perso"
+                ],
+                "lois_importantes": [
+                    "Croix gammée et symboles nazis interdits",
+                    "Ceinture obligatoire",
+                    "Alcool 16-18 ans selon type"
+                ],
+                "monnaie": "Euro (EUR)",
+                "pourboire": "5-10% apprécié"
+            },
+            "budget": {
+                "low": "50€/jour",
+                "medium": "100€/jour",
+                "high": "220€/jour",
+                "hebergement_low": "Auberge 20-40€/nuit",
+                "hebergement_medium": "Hôtel 70-150€/nuit",
+                "repas_low": "8-15€",
+                "repas_medium": "20-40€"
+            },
+            "activities": {
+                "tourisme": true,
+                "stage": true,
+                "travail": "libre pour UE, permis pour non-UE",
+                "etudes": true,
+                "volontariat": true,
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": true,
+                "hopitaux_pediatriques": true
+            },
+            "insurance_recommended": "smarty_essentiel",
+            "useful_links": {
+                "visa": "https://www.auswaertiges-amt.de/fr/visa-service",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/allemagne/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://de.ambafrance.org",
+                "emploi": "https://www.arbeitsagentur.de"
+            }
+        },
+        "AE": {
+            "name": "Émirats Arabes Unis",
+            "region": "Moyen-Orient",
+            "risk_level": "low",
+            "visa": {
+                "france": "30 jours sans visa (à l'arrivée)",
+                "belgique": "30 jours sans visa",
+                "algerie": "visa obligatoire",
+                "maroc": "30 jours sans visa",
+                "tunisie": "30 jours sans visa",
+                "visa_travail": "visa de résidence sponsorisé par l'employeur",
+                "documents_requis": [
+                    "Passeport valide 6 mois",
+                    "Preuve d'hébergement",
+                    "Billet retour"
+                ]
+            },
+            "health": {
+                "vaccines_required": [],
+                "vaccines_recommended": [
+                    "Hépatite A",
+                    "Hépatite B"
+                ],
+                "risks": [
+                    "Chaleur extrême (50°C+ en été)",
+                    "Déshydratation"
+                ],
+                "eau_potable": true,
+                "systeme_sante": "excellent",
+                "urgences": "998 (Ambulance), 999 (Police), 997 (Pompiers)"
+            },
+            "religion": {
+                "dominant": "Islam (État islamique modéré)",
+                "muslim_friendly": true,
+                "halal_food": "tout est halal par défaut",
+                "mosques": "partout",
+                "churches": "disponibles (zones désignées)",
+                "temples_hindous": "disponibles",
+                "alcohol": "autorisé dans les hôtels et bars licenciés uniquement",
+                "ramadan": "TRÈS important — manger/boire/fumer en public le jour est illégal",
+                "dress_code_religieux": "tenue couverte dans les lieux publics et mosquées",
+                "restrictions_religieuses": [
+                    "Manger/boire en public pendant Ramadan illégal",
+                    "Tenue indécente illégale",
+                    "Affection en public illégale"
+                ]
+            },
+            "security": {
+                "level": "low",
+                "indice_paix": 1.8,
+                "zones_attention": [],
+                "criminalite": "extrêmement faible",
+                "lois_strictes": [
+                    "Tolérance zéro alcool au volant",
+                    "Drogues : prison + expulsion",
+                    "Homosexualité illégale",
+                    "Critiques du gouvernement illégales"
+                ]
+            },
+            "culture": {
+                "langue_officielle": "Arabe",
+                "langues_utiles": [
+                    "Anglais très répandu (langue des affaires)"
+                ],
+                "dress_code": "tenue couverte dans les lieux publics (épaules et genoux), maillot de bain sur les plages uniquement",
+                "coutumes": [
+                    "Main droite pour manger/donner",
+                    "Respect des aînés",
+                    "Hospitalité importante",
+                    "Ne pas photographier les femmes sans permission"
+                ],
+                "lois_importantes": [
+                    "Drogues : prison ferme + expulsion",
+                    "Homosexualité illégale (prison)",
+                    "VPN illégal",
+                    "Alcool hors établissements licenciés illégal",
+                    "Relation hors mariage illégale"
+                ],
+                "monnaie": "Dirham des EAU (AED)",
+                "pourboire": "10% apprécié"
+            },
+            "budget": {
+                "low": "80€/jour",
+                "medium": "180€/jour",
+                "high": "500€/jour",
+                "hebergement_low": "Auberge 30-60€/nuit",
+                "hebergement_medium": "Hôtel 100-250€/nuit",
+                "repas_low": "8-15€",
+                "repas_medium": "25-60€"
+            },
+            "activities": {
+                "tourisme": true,
+                "travail": "visa de résidence requis",
+                "stage": true,
+                "expat": true,
+                "affaires": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": true,
+                "hopitaux_pediatriques": true,
+                "attention_enfants": [
+                    "Chaleur extrême en été",
+                    "Crème solaire indice 50+",
+                    "Hydratation constante"
+                ]
+            },
+            "insurance_recommended": "smarty_confort",
+            "useful_links": {
+                "visa": "https://smartservices.icp.gov.ae",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/emirats-arabes-unis/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://ae.ambafrance.org",
+                "travail": "https://www.mohre.gov.ae"
+            }
+        },
+        "ID": {
+            "name": "Indonésie",
+            "region": "Asie du Sud-Est",
+            "risk_level": "moderate",
+            "visa": {
+                "france": "Visa à l'arrivée (35$, 30 jours) ou e-Visa",
+                "belgique": "Visa à l'arrivée",
+                "algerie": "e-Visa obligatoire",
+                "maroc": "Visa à l'arrivée",
+                "documents_requis": [
+                    "Passeport valide 6 mois",
+                    "Billet retour",
+                    "Preuve de fonds"
+                ]
+            },
+            "health": {
+                "vaccines_required": [
+                    "Fièvre jaune si arrivée depuis pays endémique"
+                ],
+                "vaccines_recommended": [
+                    "Hépatite A",
+                    "Hépatite B",
+                    "Typhoïde",
+                    "Rage",
+                    "Encéphalite japonaise"
+                ],
+                "risks": [
+                    "Dengue (toute l'année)",
+                    "Paludisme (zones rurales)",
+                    "Rage (animaux)",
+                    "Choléra"
+                ],
+                "eau_potable": false,
+                "systeme_sante": "limité hors Bali et Jakarta",
+                "urgences": "118 (Ambulance), 110 (Police)"
+            },
+            "religion": {
+                "dominant": "Islam (87%, le plus grand pays musulman du monde)",
+                "muslim_friendly": true,
+                "halal_food": "très largement disponible (Bali: porc présent, attention)",
+                "mosques": "partout",
+                "temples_hindous": "Bali (majorité hindoue)",
+                "churches": "disponibles",
+                "alcohol": "disponible (restreint dans certaines provinces)",
+                "ramadan": "très respecté, rythme change",
+                "dress_code_religieux": "tenue couverte dans les mosquées et temples",
+                "restrictions_religieuses": [
+                    "Aceh : loi islamique stricte (charia)",
+                    "Tenue couverte dans les lieux religieux"
+                ]
+            },
+            "security": {
+                "level": "moderate",
+                "zones_attention": [
+                    "Papua (tensions séparatistes)",
+                    "Aceh (zones reculées)",
+                    "Sulawesi (zones reculées)"
+                ],
+                "risques_naturels": [
+                    "Volcans actifs",
+                    "Tremblements de terre",
+                    "Tsunamis",
+                    "Inondations"
+                ],
+                "criminalite": "pickpocket dans les zones touristiques"
+            },
+            "culture": {
+                "langue_officielle": "Bahasa Indonesia",
+                "langues_utiles": [
+                    "Anglais (Bali, Jakarta)",
+                    "Balinais (Bali)"
+                ],
+                "dress_code": "tenue couverte hors zones balnéaires",
+                "coutumes": [
+                    "Sourire important",
+                    "Respect des aînés",
+                    "Main gauche considérée impure",
+                    "Chaussures enlevées avant d'entrer"
+                ],
+                "lois_importantes": [
+                    "Drogues : peine de mort",
+                    "Homosexualité illégale dans certaines provinces",
+                    "Respect des lieux religieux"
+                ],
+                "monnaie": "Roupie indonésienne (IDR)",
+                "pourboire": "10% apprécié"
+            },
+            "budget": {
+                "low": "20€/jour",
+                "medium": "50€/jour",
+                "high": "130€/jour",
+                "hebergement_low": "Guesthouse 8-20€/nuit",
+                "hebergement_medium": "Hôtel 35-90€/nuit",
+                "repas_low": "1-4€ (warung local)",
+                "repas_medium": "8-25€"
+            },
+            "activities": {
+                "tourisme": true,
+                "volontariat": true,
+                "stage": true,
+                "travail": "permis de travail requis",
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": "Bali et Jakarta",
+                "hopitaux_pediatriques": "Bali et Jakarta uniquement",
+                "attention_enfants": [
+                    "Vaccins complets obligatoires",
+                    "Prophylaxie paludisme",
+                    "Eau en bouteille uniquement",
+                    "Plan tremblement de terre"
+                ]
+            },
+            "insurance_recommended": "smarty_premium",
+            "useful_links": {
+                "visa": "https://molina.imigrasi.go.id",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/indonesie/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "vaccins": "https://www.who.int/travel-advice",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://id.ambafrance.org"
+            }
+        },
+        "BR": {
+            "name": "Brésil",
+            "region": "Amérique du Sud",
+            "risk_level": "moderate",
+            "visa": {
+                "france": "90 jours sans visa",
+                "belgique": "90 jours sans visa",
+                "algerie": "visa obligatoire",
+                "maroc": "visa obligatoire",
+                "documents_requis": [
+                    "Passeport valide 6 mois",
+                    "Preuve de fonds",
+                    "Billet retour"
+                ]
+            },
+            "health": {
+                "vaccines_required": [
+                    "Fièvre jaune (zones amazoniennes)"
+                ],
+                "vaccines_recommended": [
+                    "Hépatite A",
+                    "Hépatite B",
+                    "Typhoïde",
+                    "Rage"
+                ],
+                "risks": [
+                    "Dengue (épidémies fréquentes)",
+                    "Zika",
+                    "Chikungunya",
+                    "Paludisme (Amazonie)"
+                ],
+                "eau_potable": false,
+                "systeme_sante": "variable (excellent en secteur privé, limité en public)",
+                "urgences": "192 (SAMU), 190 (Police), 193 (Pompiers)"
+            },
+            "religion": {
+                "dominant": "Christianisme (Catholicisme + Évangélisme)",
+                "muslim_friendly": true,
+                "halal_food": "disponible dans les grandes villes (São Paulo)",
+                "mosques": "disponibles dans les grandes villes",
+                "churches": "partout",
+                "alcohol": "autorisé (18 ans)",
+                "ramadan": "aucune restriction",
+                "dress_code_religieux": "aucun",
+                "restrictions_religieuses": []
+            },
+            "security": {
+                "level": "moderate",
+                "indice_paix": 7.5,
+                "zones_dangereuses": [
+                    "Favelas sans guide local",
+                    "Certains quartiers de Rio, São Paulo, Salvador la nuit"
+                ],
+                "criminalite": "élevée (vol à l'arraché, agression)",
+                "conseils": [
+                    "Ne pas montrer bijoux/téléphone",
+                    "Taxi officiel uniquement",
+                    "Éviter les plages la nuit"
+                ]
+            },
+            "culture": {
+                "langue_officielle": "Portugais",
+                "langues_utiles": [
+                    "Espagnol compris partiellement",
+                    "Anglais limité hors zones touristiques"
+                ],
+                "dress_code": "très décontracté",
+                "coutumes": [
+                    "Chaleur humaine",
+                    "Contact physique normal",
+                    "Carnaval culture",
+                    "Football religion"
+                ],
+                "lois_importantes": [
+                    "Alcool 18 ans",
+                    "Drogues : prison",
+                    "Respect de l'environnement"
+                ],
+                "monnaie": "Real brésilien (BRL)",
+                "pourboire": "10% service inclus généralement"
+            },
+            "budget": {
+                "low": "30€/jour",
+                "medium": "70€/jour",
+                "high": "180€/jour",
+                "hebergement_low": "Auberge 15-30€/nuit",
+                "hebergement_medium": "Hôtel 50-120€/nuit",
+                "repas_low": "5-10€",
+                "repas_medium": "15-35€"
+            },
+            "activities": {
+                "tourisme": true,
+                "volontariat": true,
+                "stage": true,
+                "travail": "permis de travail requis",
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": "grandes villes",
+                "hopitaux_pediatriques": true,
+                "attention_enfants": [
+                    "Vaccin fièvre jaune",
+                    "Prophylaxie dengue",
+                    "Vigilance sécurité renforcée"
+                ]
+            },
+            "insurance_recommended": "smarty_premium",
+            "useful_links": {
+                "visa": "https://www.gov.br/mre/pt-br/assuntos/portal-consular/vistos",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/bresil/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "vaccins": "https://www.who.int/travel-advice",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://br.ambafrance.org"
+            }
+        },
+        "IN": {
+            "name": "Inde",
+            "region": "Asie du Sud",
+            "risk_level": "moderate",
+            "visa": {
+                "france": "e-Visa obligatoire (25$, en ligne)",
+                "belgique": "e-Visa obligatoire",
+                "algerie": "e-Visa obligatoire",
+                "maroc": "e-Visa obligatoire",
+                "documents_requis": [
+                    "Passeport valide 6 mois",
+                    "e-Visa imprimé",
+                    "Preuve d'hébergement",
+                    "Preuve de fonds"
+                ]
+            },
+            "health": {
+                "vaccines_required": [
+                    "Fièvre jaune si arrivée depuis pays endémique"
+                ],
+                "vaccines_recommended": [
+                    "Hépatite A",
+                    "Hépatite B",
+                    "Typhoïde",
+                    "Rage",
+                    "Encéphalite japonaise",
+                    "Polio"
+                ],
+                "risks": [
+                    "Paludisme",
+                    "Dengue",
+                    "Typhus",
+                    "Gastro-entérite",
+                    "Pollution de l'air (Delhi)"
+                ],
+                "eau_potable": false,
+                "conseil_eau": "eau en bouteille UNIQUEMENT, éviter glaçons et crudités",
+                "systeme_sante": "variable (excellent secteur privé dans grandes villes)",
+                "urgences": "112 (Urgences), 100 (Police), 101 (Pompiers)"
+            },
+            "religion": {
+                "dominant": "Hindouisme (80%), Islam (14%), Christianisme, Sikhisme, Bouddhisme, Jaïnisme",
+                "muslim_friendly": true,
+                "halal_food": "très disponible (grande communauté musulmane)",
+                "mosques": "très nombreuses",
+                "temples_hindous": "partout",
+                "temples_sikhs": "partout (langar — repas gratuit pour tous)",
+                "churches": true,
+                "alcohol": "restreint (certains États dry comme Gujarat, Bihar)",
+                "ramadan": "très respecté dans les zones musulmanes",
+                "dress_code_religieux": "tenue couverte dans tous les lieux religieux (tête couverte dans les temples Sikhs)",
+                "restrictions_religieuses": [
+                    "Bœuf interdit/sacré (hindous)",
+                    "Porc interdit (musulmans)",
+                    "Chaussures enlevées dans tous les temples",
+                    "Tête couverte dans les Gurdwaras Sikhs"
+                ]
+            },
+            "security": {
+                "level": "moderate",
+                "zones_attention": [
+                    "Cachemire (conflit)",
+                    "Manipur",
+                    "Zones maoïstes (Jharkhand, Chhattisgarh)"
+                ],
+                "criminalite": "pickpocket, arnaques touristiques fréquentes",
+                "femmes": "vigilance accrue conseillée pour les femmes voyageant seules"
+            },
+            "culture": {
+                "langue_officielle": "Hindi, Anglais (22 langues officielles)",
+                "langues_utiles": [
+                    "Anglais très répandu dans les zones touristiques"
+                ],
+                "dress_code": "tenue couverte (épaules et genoux), essentiel dans les temples",
+                "coutumes": [
+                    "Namaste (salutation mains jointes)",
+                    "Main droite pour manger/donner",
+                    "Chaussures enlevées dans les maisons",
+                    "Vache sacrée — ne jamais toucher avec mépris"
+                ],
+                "lois_importantes": [
+                    "Bœuf interdit dans de nombreux États",
+                    "Drogues : prison ferme",
+                    "Photos des femmes sans autorisation déconseillée"
+                ],
+                "monnaie": "Roupie indienne (INR)",
+                "pourboire": "10% apprécié"
+            },
+            "budget": {
+                "low": "15€/jour",
+                "medium": "40€/jour",
+                "high": "120€/jour",
+                "hebergement_low": "Auberge/Guesthouse 5-15€/nuit",
+                "hebergement_medium": "Hôtel 25-70€/nuit",
+                "repas_low": "1-4€ (dhal, chapati)",
+                "repas_medium": "6-20€"
+            },
+            "activities": {
+                "tourisme": true,
+                "volontariat": true,
+                "stage": true,
+                "travail": "permis de travail requis",
+                "pelerinage": true,
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": "grandes villes",
+                "hopitaux_pediatriques": "grandes villes uniquement",
+                "attention_enfants": [
+                    "Vaccins complets obligatoires",
+                    "Eau en bouteille uniquement",
+                    "Eviter les crudités",
+                    "Prophylaxie paludisme selon zones"
+                ]
+            },
+            "insurance_recommended": "smarty_premium",
+            "useful_links": {
+                "visa": "https://indianvisaonline.gov.in",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/inde/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "vaccins": "https://www.who.int/travel-advice",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://in.ambafrance.org"
+            }
+        },
+        "KE": {
+            "name": "Kenya",
+            "region": "Afrique de l'Est",
+            "risk_level": "moderate",
+            "visa": {
+                "france": "e-Visa obligatoire (52$)",
+                "belgique": "e-Visa obligatoire",
+                "algerie": "e-Visa obligatoire",
+                "maroc": "e-Visa obligatoire",
+                "documents_requis": [
+                    "Passeport valide 6 mois",
+                    "e-Visa",
+                    "Preuve de fonds",
+                    "Billet retour"
+                ]
+            },
+            "health": {
+                "vaccines_required": [
+                    "Fièvre jaune OBLIGATOIRE"
+                ],
+                "vaccines_recommended": [
+                    "Hépatite A",
+                    "Hépatite B",
+                    "Typhoïde",
+                    "Rage",
+                    "Méningite",
+                    "Polio"
+                ],
+                "risks": [
+                    "Paludisme (prophylaxie obligatoire)",
+                    "Dengue",
+                    "Choléra",
+                    "Fièvre de la vallée du Rift"
+                ],
+                "eau_potable": false,
+                "systeme_sante": "limité hors Nairobi",
+                "urgences": "999 (Police), 112 (Urgences)"
+            },
+            "religion": {
+                "dominant": "Christianisme (85%), Islam (côte et nord-est)",
+                "muslim_friendly": true,
+                "halal_food": "disponible dans les zones côtières et à Nairobi",
+                "mosques": "zones côtières (Mombasa)",
+                "churches": "partout",
+                "alcohol": "autorisé",
+                "ramadan": "respecté dans les zones musulmanes",
+                "dress_code_religieux": "tenue couverte dans les mosquées"
+            },
+            "security": {
+                "level": "moderate",
+                "zones_attention": [
+                    "Frontière somalienne (Al-Shabaab)",
+                    "Frontière éthiopienne",
+                    "Certains quartiers de Nairobi la nuit"
+                ],
+                "criminalite": "pickpocket, agressions dans certaines zones"
+            },
+            "culture": {
+                "langue_officielle": "Swahili, Anglais",
+                "dress_code": "décontracté, tenue couverte dans les mosquées",
+                "coutumes": [
+                    "Jambo (bonjour en swahili)",
+                    "Hospitalité importante",
+                    "Respect des aînés"
+                ],
+                "lois_importantes": [
+                    "Homosexualité illégale",
+                    "Drogues : prison",
+                    "Sacs plastiques interdits"
+                ],
+                "monnaie": "Shilling kényan (KES)",
+                "pourboire": "10-15% apprécié"
+            },
+            "budget": {
+                "low": "25€/jour",
+                "medium": "60€/jour",
+                "high": "200€/jour (safari)",
+                "hebergement_low": "Auberge 10-25€/nuit",
+                "hebergement_medium": "Hôtel 40-100€/nuit",
+                "repas_low": "3-7€",
+                "repas_medium": "12-30€"
+            },
+            "activities": {
+                "tourisme": true,
+                "volontariat": true,
+                "mission_humanitaire": true,
+                "stage": true,
+                "travail": "permis de travail requis",
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": "Nairobi",
+                "hopitaux_pediatriques": "Nairobi uniquement",
+                "attention_enfants": [
+                    "Fièvre jaune OBLIGATOIRE",
+                    "Prophylaxie paludisme",
+                    "Eau en bouteille"
+                ]
+            },
+            "insurance_recommended": "smarty_premium",
+            "useful_links": {
+                "visa": "https://evisa.go.ke",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/kenya/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "vaccins": "https://www.who.int/travel-advice",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://ke.ambafrance.org"
+            }
+        },
+        "ES": {
+            "name": "Espagne",
+            "region": "Europe du Sud",
+            "risk_level": "low",
+            "visa": {
+                "france": "libre circulation (UE)",
+                "belgique": "libre circulation (UE)",
+                "algerie": "visa Schengen requis",
+                "maroc": "visa Schengen requis",
+                "documents_requis": [
+                    "Carte d'identité ou passeport (UE)",
+                    "Visa Schengen (non-UE)"
+                ]
+            },
+            "health": {
+                "vaccines_required": [],
+                "vaccines_recommended": [
+                    "Grippe"
+                ],
+                "risks": [
+                    "Chaleur extrême (été)"
+                ],
+                "eau_potable": true,
+                "systeme_sante": "excellent",
+                "urgences": "112"
+            },
+            "religion": {
+                "dominant": "Catholicisme (laïcité progressive)",
+                "muslim_friendly": true,
+                "halal_food": "très disponible (grande communauté marocaine)",
+                "mosques": true,
+                "churches": true,
+                "alcohol": "autorisé (18 ans)",
+                "ramadan": "aucune restriction",
+                "dress_code_religieux": "tenue correcte dans les églises",
+                "restrictions_religieuses": []
+            },
+            "security": {
+                "level": "low",
+                "indice_paix": 1.9,
+                "zones_attention": [
+                    "Zones très touristiques (pickpocket fréquent : La Rambla Barcelone, Metro Madrid)"
+                ],
+                "criminalite": "faible, pickpocket dans les zones touristiques"
+            },
+            "culture": {
+                "langue_officielle": "Espagnol (Castillan), Catalan, Basque, Galicien",
+                "dress_code": "décontracté",
+                "coutumes": [
+                    "Repas très tardifs (dîner 21h-23h)",
+                    "Sieste culture",
+                    "Bise de salutation",
+                    "Vie nocturne très active"
+                ],
+                "lois_importantes": [
+                    "Alcool 18 ans",
+                    "Certaines plages nudistes autorisées",
+                    "Cannabis en usage privé toléré"
+                ],
+                "monnaie": "Euro (EUR)",
+                "pourboire": "5-10% apprécié"
+            },
+            "budget": {
+                "low": "45€/jour",
+                "medium": "90€/jour",
+                "high": "200€/jour",
+                "hebergement_low": "Auberge 15-35€/nuit",
+                "hebergement_medium": "Hôtel 60-130€/nuit",
+                "repas_low": "8-14€ (menu del día)",
+                "repas_medium": "18-40€"
+            },
+            "activities": {
+                "tourisme": true,
+                "stage": true,
+                "travail": "libre pour UE",
+                "etudes": true,
+                "volontariat": true,
+                "expat": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": true,
+                "hopitaux_pediatriques": true
+            },
+            "insurance_recommended": "smarty_essentiel",
+            "useful_links": {
+                "visa": "https://www.exteriores.gob.es/fr/ServiciosAlCiudadano/Paginas/SolicitudDeVisado.aspx",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/espagne/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://es.ambafrance.org",
+                "emploi": "https://www.sepe.es"
+            }
+        },
+        "SA": {
+            "name": "Arabie Saoudite",
+            "region": "Moyen-Orient",
+            "risk_level": "low",
+            "visa": {
+                "france": "e-Visa touristique (117$)",
+                "belgique": "e-Visa touristique",
+                "algerie": "visa pèlerinage (Hajj/Oumra) ou visa travail",
+                "maroc": "e-Visa touristique",
+                "tunisie": "e-Visa touristique",
+                "visa_travail": "iqama (permis de résidence) sponsorisé par employeur",
+                "documents_requis": [
+                    "Passeport valide 6 mois",
+                    "e-Visa",
+                    "Assurance médicale obligatoire"
+                ]
+            },
+            "health": {
+                "vaccines_required": [
+                    "Méningite ACWY (pèlerinage Hajj/Oumra OBLIGATOIRE)",
+                    "Polio (certains pays)"
+                ],
+                "vaccines_recommended": [
+                    "Hépatite A",
+                    "Hépatite B"
+                ],
+                "risks": [
+                    "Chaleur extrême (55°C+ en été)",
+                    "MERS-CoV (coronavirus du Moyen-Orient)",
+                    "Déshydratation"
+                ],
+                "eau_potable": true,
+                "systeme_sante": "excellent",
+                "urgences": "911 (Urgences), 999 (Police), 998 (Ambulance)"
+            },
+            "religion": {
+                "dominant": "Islam (100%, gardien des lieux saints)",
+                "muslim_friendly": true,
+                "halal_food": "tout est halal (porc interdit)",
+                "mosques": "partout (non-musulmans non autorisés dans certaines mosquées)",
+                "churches": "INTERDITES",
+                "synagogues": "INTERDITES",
+                "alcohol": "INTERDIT (zéro tolérance)",
+                "ramadan": "TRÈS strict — manger/boire/fumer en public illégal",
+                "dress_code_religieux": "abaya pour les femmes (OBLIGATOIRE dans les lieux publics — zones touristiques plus flexibles depuis 2019)",
+                "restrictions_religieuses": [
+                    "Alcool strictement interdit",
+                    "Porc interdit",
+                    "Prière 5 fois par jour respectée",
+                    "Prosélytisme non-islamique illégal",
+                    "Non-musulmans interdits à La Mecque et Médine"
+                ]
+            },
+            "security": {
+                "level": "low",
+                "indice_paix": 3.5,
+                "zones_attention": [
+                    "Frontière yéménite (Sud)",
+                    "Zones frontalières Est"
+                ],
+                "criminalite": "extrêmement faible",
+                "lois_tres_strictes": [
+                    "Alcool : prison + flagellation + expulsion",
+                    "Drogues : peine de mort",
+                    "Homosexualité : prison + expulsion",
+                    "Blasphème : prison"
+                ]
+            },
+            "culture": {
+                "langue_officielle": "Arabe",
+                "langues_utiles": [
+                    "Anglais dans les affaires et zones touristiques"
+                ],
+                "dress_code": "tenue couverte pour tous, abaya pour femmes dans lieux publics",
+                "coutumes": [
+                    "Salutation islamique",
+                    "Séparation hommes/femmes dans certains espaces",
+                    "Main droite uniquement",
+                    "Ne pas photographier les femmes"
+                ],
+                "lois_importantes": [
+                    "Alcool : prison ferme",
+                    "Drogues : peine de mort",
+                    "Homosexualité : prison",
+                    "Respect absolu de l'Islam et de la famille royale"
+                ],
+                "monnaie": "Riyal saoudien (SAR)",
+                "pourboire": "10% apprécié"
+            },
+            "budget": {
+                "low": "60€/jour",
+                "medium": "130€/jour",
+                "high": "350€/jour",
+                "hebergement_low": "Hôtel économique 30-60€/nuit",
+                "hebergement_medium": "Hôtel 80-200€/nuit",
+                "repas_low": "5-10€",
+                "repas_medium": "15-40€"
+            },
+            "activities": {
+                "tourisme": true,
+                "travail": "iqama requis",
+                "expat": true,
+                "pelerinage": true,
+                "affaires": true
+            },
+            "famille": {
+                "adapte_enfants": true,
+                "ecoles_internationales": true,
+                "hopitaux_pediatriques": true,
+                "attention_enfants": [
+                    "Chaleur extrême en été",
+                    "Respect strict dress code",
+                    "Hydratation constante"
+                ]
+            },
+            "insurance_recommended": "smarty_confort",
+            "useful_links": {
+                "visa": "https://visa.visitsaudi.com",
+                "hajj_omra": "https://www.haj.gov.sa",
+                "diplomatie": "https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/arabie-saoudite/",
+                "sante": "https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage",
+                "assurance": "https://www.smartstarts.com/assurance",
+                "ambassade_france": "https://sa.ambafrance.org",
+                "travail": "https://www.mol.gov.sa"
+            }
+        }
+    }
+}
